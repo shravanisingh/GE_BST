@@ -1,4 +1,4 @@
-public class BinarySearchTree {
+class BinarySearchTree {
     private Node root;
 
     public void add(int data) {
@@ -9,18 +9,29 @@ public class BinarySearchTree {
         if (current == null) {
             return new Node(data);
         }
+
         if (data < current.data) {
             current.left = addRecursive(current.left, data);
-        }
-        else if (data > current.data) {
+        } else if (data > current.data) {
             current.right = addRecursive(current.right, data);
         }
+
         return current;
+    }
+
+    public int size() {
+        return sizeRecursive(root);
+    }
+
+    private int sizeRecursive(Node current) {
+        if (current == null) {
+            return 0;
+        }
+        return 1 + sizeRecursive(current.left) + sizeRecursive(current.right);
     }
 
     public void inorderTraversal() {
         inorderTraversalRecursive(root);
-        System.out.println();
     }
 
     private void inorderTraversalRecursive(Node node) {
