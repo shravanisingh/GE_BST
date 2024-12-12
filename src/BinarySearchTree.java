@@ -41,4 +41,21 @@ class BinarySearchTree {
             inorderTraversalRecursive(node.right);
         }
     }
+    public boolean search(int data) {
+        return searchRecursive(root, data);
+    }
+    private boolean searchRecursive(Node current, int data) {
+        if (current == null) {
+            return false;
+        }
+        if (data == current.data) {
+            return true;
+        }
+        if (data < current.data) {
+            return searchRecursive(current.left, data);
+        } else {
+            return searchRecursive(current.right, data);
+        }
+    }
+
 }
